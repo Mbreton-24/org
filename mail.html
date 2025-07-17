@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Registro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styler.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1><i class="fas fa-id-card"></i> Sistema de Registro</h1>
+      <p>Gestión y seguimiento de matrículas estudiantiles</p>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="stats-section">
+      <div class="stat-card">
+        <div class="stat-number" id="totalDocs">0</div>
+        <div class="stat-label">Total Matrículas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="pendingDocs">0</div>
+        <div class="stat-label">En Espera</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="completedDocs">0</div>
+        <div class="stat-label">Realizados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="completionRate">0%</div>
+        <div class="stat-label">Tasa de Completado</div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Form Section -->
+      <div class="form-section">
+        <h2><i class="fas fa-plus-circle"></i> Registrar Nuevo</h2>
+        <form id="documentForm">
+          <div class="form-group">
+            <label for="documentTitle">Matrícula *</label>
+            <input type="text" id="documentTitle" required placeholder="Ej: 12-3456" pattern="[0-9]{2}-[0-9]{4}" title="La matrícula debe tener el formato 12-3456.">
+          </div>
+
+          <div class="form-group">
+            <label for="documentType">Tipo de Documento *</label>
+            <select id="documentType" required>
+              <option value="">Seleccionar tipo</option>
+              <option value="historial">Historial Académico</option>
+              <option value="constancia">Constancia de Estudios</option>
+              <option value="kardex">Kardex</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="senderName">Carrera *</label>
+            <input type="text" id="senderName" required placeholder="Nombre de la carrera">
+          </div>
+
+          <div class="form-group">
+            <label for="senderEmail">Fecha de Recibido</label>
+            <input type="date" id="senderEmail">
+          </div>
+
+
+          <button type="submit" class="btn btn-register">
+            <i class="fas fa-save"></i> Registrar Documento
+          </button>
+        </form>
+      </div>
+
+      <!-- Documents Section -->
+      <div class="documents-section">
+        <!-- Status Tabs -->
+        <div class="status-tabs">
+          <div class="tab active" data-status="all">
+            <i class="fas fa-list"></i> Todos
+          </div>
+          <div class="tab" data-status="pending">
+            <i class="fas fa-clock"></i> En Espera
+          </div>
+          <div class="tab" data-status="completed">
+            <i class="fas fa-check-circle"></i> Realizados
+          </div>
+        </div>
+
+        <!-- Search Box -->
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Buscar por matrícula, remitente...">
+        </div>
+
+        <!-- Documents Container -->
+        <div class="documents-container">
+          <div id="documentsContainer">
+            <div class="empty-state">
+              <i class="fas fa-inbox"></i>
+              <h3>No hay matrículas registradas</h3>
+              <p>Comienza registrando tu primera matrícula usando el formulario de la izquierda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification -->
+  <div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="notificationText">Matrícula registrada exitosamente</span>
+  </div>
+
+  <script src="scri.js"></script>
+</body>
+</html>
